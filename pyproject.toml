@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "projetoagenda"
+version = "0.1.0"
+description = "A Contact manager"
+authors = ["Everton-Fontes <solucoestge@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.1.1"
+django-ninja = "^0.19.1"
+uvicorn = "^0.18.3"
+Pillow = "^9.2.0"
+gunicorn = "^20.1.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
