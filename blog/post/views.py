@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 # Create your views here.
 
 
 async def index(request: HttpRequest):
-    return 'Hello Worlds'
+    return HttpResponse('Hello Worlds')
+
+
+async def detail(request: HttpRequest, pk: int):
+    return HttpResponse(f'pk = {pk}')
