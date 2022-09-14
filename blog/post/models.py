@@ -21,3 +21,6 @@ class Post(models.Model):
         upload_to='fotos/%Y/%m/'
     )
     published = models.BooleanField(default=True)
+
+    def __str__(self) -> str:
+        return f'{self.id} - {self.title}'

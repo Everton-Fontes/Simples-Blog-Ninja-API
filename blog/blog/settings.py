@@ -38,10 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'accounts',
     'comments',
     'category',
     'post',
+
+
+
+    'django_summernote',
 ]
 
 MIDDLEWARE = [

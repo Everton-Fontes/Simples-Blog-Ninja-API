@@ -12,3 +12,6 @@ class Comment(models.Model):
     comment_user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment_date = models.DateField(auto_now_add=True)
     comment_published = models.BooleanField()
+
+    def __str__(self) -> str:
+        return f'{self.comment_title}'
