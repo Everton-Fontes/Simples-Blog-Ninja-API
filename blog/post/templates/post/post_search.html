@@ -1,5 +1,5 @@
-{% extends 'base.html' %}{% load humanize %} {% load gifsfilter %}
-{% block title %} Bem Vindo{%endblock%} {% block content %}
+{% extends 'base.html' %} {% load humanize %} {% block title %} Busca
+{%endblock%} {% block content %}
 <div class="card-columns mt-4">
   {% for post in posts%}
   <!-- FOR LOOP -->
@@ -20,8 +20,8 @@
       <p class="card-text">{{ post.excerpt }}</p>
       <p class="card-text">
         <small class="text-muted"
-          >{{ post.date|naturalday|title}} | 
-          {{post.comment_number|plurals_comments}} | {{post.category}}</small
+          >{{ post.date|naturalday|title}} | {{ post.comment_number}}
+          comentário(s) | {{post.category}}</small
         >
       </p>
 

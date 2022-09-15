@@ -1,0 +1,71 @@
+{% extends 'base.html' %}{% load humanize %}{% load gifsfilter %}
+{% block content %}
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-xl"></div>
+    <div class="col-xl-8 text-center">
+      <h2>{{ post.title }}</h2>
+      <h5>{{ post.excerpt }}</h5>
+      <p class="text-muted mt-4">
+        <small>
+          {{ post.author }} | {{ post.date }} | {{ post.category }}
+        </small>
+      </p>
+    </div>
+    <div class="col-xl"></div>
+  </div>
+
+  <div class="row pt-5">
+    <div class="col-xl"></div>
+    <div class="col-xl-8">
+      {% if post.image_title %}
+      <img
+        class="img-fluid pb-5"
+        src="{{ post.image_title.url }}"
+        alt="{{ post.title }}"
+      />
+      {%endif%} {{ post.content|safe }}
+    </div>
+    <div class="col-xl"></div>
+  </div>
+
+  {% if comments %}
+  <div class="row pt-5">
+    <div class="col-xl"></div>
+    <div class="col-xl-8">
+      <h2 class="my-3">Comentários ({{comments.count}})</h2>
+      {%for comment in comments %}
+      <h5 class="mb-2 mt-5">{{comment.comment_user|hasuser}} disse:</h5>
+      <small class="text-muted">{{comment.comment_date|naturalday}}</small>
+      <p class="mb-1">{{comment.comment}}</p>
+      {%endfor%}
+    </div>
+    <div class="col-xl"></div>
+  </div>
+  {%endif%}
+  <div class="row pt-5">
+    <div class="col-xl"></div>
+    <div class="col-xl-8">
+      <h2 class="my-3">Deixe um comentário</h2>
+
+      <form method="POST" action="#envia_comentario">
+        {% include 'partials/_messages.html' %} {%csrf_token%}
+        <table class="table">
+          {{ form }}
+          <tr>
+            <td colspan="2">
+              <input
+                id="envia_comentario"
+                type="submit"
+                class="btn btn-primary"
+                value="Enviar"
+              />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div class="col-xl"></div>
+  </div>
+</div>
+{%endblock%}
