@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from .models import Comment
+from django.forms.widgets import TextInput, EmailInput, Textarea
 
 
 class FormComment(ModelForm):
@@ -20,3 +21,19 @@ class FormComment(ModelForm):
     class Meta:
         model = Comment
         fields = ('comment_title', 'comment_email', 'comment',)
+
+        widgets = {
+            'comment_title': TextInput(attrs={
+                'placeholder': 'Digite seu nome',
+                'class': 'form-control'
+            }),
+            'comment_email': EmailInput(attrs={
+                'placeholder': 'Digite seu e-mail',
+                'class': 'form-control'
+            }),
+            'comment': Textarea(attrs={
+                'placeholder': 'Digite seu cometário',
+                'class': 'form-control',
+                # 'rows': 5,
+            }),
+        }

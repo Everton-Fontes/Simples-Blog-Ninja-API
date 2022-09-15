@@ -32,6 +32,7 @@ class PostIndex(ListView):
     def get_queryset(self):
         """Return the last five published questions."""
         qs = super().get_queryset()
+        qs = qs.select_related('category')
         qs = qs.order_by('-id').filter(published=True)
         qs = qs.annotate(
             comment_number=Count(
@@ -112,12 +113,3 @@ class PostDetail(UpdateView):
         comment.save()
         messages.success(self.request, "Comentário Enviado!")
         return redirect('post_detail', pk=post.id)
-
-    # @classonlymethod
-    # def as_view(cls, **initkwargs):
-    #     view = super().as_view(**initkwargs)
-    #     view._is_coroutine = asyncio.coroutines._is_coroutine
-    #     return view
-
-    # async def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
-    #     return await sync_to_async(super().get)(request, *args, **kwargs)
